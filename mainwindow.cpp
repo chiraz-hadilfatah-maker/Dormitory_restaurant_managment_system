@@ -830,7 +830,9 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     QMainWindow::resizeEvent(event);
 }
 MainWindow::~MainWindow()
-{
+{   if(uni){
+        uni->saveToCSV();
+        delete uni;}
     delete ui;
 }
 
@@ -856,6 +858,7 @@ void MainWindow::on_addBtn_clicked()
 
         student newStudent(id, name, year);
         uni->add_student(newStudent);
+        uni->saveToCSV();
 
         QMessageBox::information(this, "Success", "Student added successfully!");
         on_clearBtn_clicked();
@@ -887,6 +890,7 @@ void MainWindow::on_dormAddBtn_clicked()
         restaurant rest;
         dormitory newDorm(rest, name, 10, capacity);
         uni->add_dormitory(newDorm);
+        uni->saveToCSV();
 
         QMessageBox::information(this, "Success", "Dormitory added successfully!");
         on_dormClearBtn_clicked();
@@ -910,6 +914,7 @@ void MainWindow::on_dormRemoveBtn_clicked()
 
         QString name = dormTable->item(currentRow, 0)->text();
         uni->remove_dormitory(name.toStdString());
+        uni->saveToCSV();
 
         QMessageBox::information(this, "Success", "Dormitory removed successfully!");
         refreshDormitoryTable();

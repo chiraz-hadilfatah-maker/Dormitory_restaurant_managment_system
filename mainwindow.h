@@ -14,11 +14,16 @@
 #include <QSpacerItem>
 #include <QHeaderView>
 #include<QMessageBox>
+
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
 }
 QT_END_NAMESPACE
+
+
 
 class MainWindow : public QMainWindow
 {
@@ -52,6 +57,8 @@ class MainWindow : public QMainWindow
     QLabel *totalRoomsCountLabel;
     QLabel *totalDormStudentsCountLabel;
     QLabel *totalDormCount;
+
+
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
